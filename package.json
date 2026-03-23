@@ -1,0 +1,13 @@
+{
+  "name": "pymit-training-hub",
+  "private": true,
+  "version": "1.0.0",
+  "description": "PyMIT Training Hub - Gestión visual de formaciones y calendarios",
+  "scripts": {
+    "dev": "npm run dev --workspace=client",
+    "build": "npm run build --workspace=client",
+    "preview": "npm run preview --workspace=client",
+    "install:all": "npm install --workspaces"
+  },
+  "workspaces": ["client"]
+}
