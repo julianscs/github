@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sky_blue">#2E7CF6</color>
+    <color name="sky_blue_dark">#1A56C4</color>
+    <color name="sun_yellow">#FFC107</color>
+
+    <color name="widget_background_start">#2E7CF6</color>
+    <color name="widget_background_end">#1A56C4</color>
+    <color name="widget_text_primary">#FFFFFF</color>
+    <color name="widget_text_secondary">#D6E4FF</color>
+</resources>
