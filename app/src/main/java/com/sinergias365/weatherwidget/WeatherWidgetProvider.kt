@@ -7,8 +7,10 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.text.format.DateFormat
+import android.view.View
 import android.widget.RemoteViews
 import java.util.Date
+import kotlin.math.roundToInt
 
 class WeatherWidgetProvider : AppWidgetProvider() {
 
@@ -47,6 +49,7 @@ class WeatherWidgetProvider : AppWidgetProvider() {
                 views.setTextViewText(R.id.widget_location, context.getString(R.string.widget_no_data_location))
                 views.setTextViewText(R.id.widget_updated_at, context.getString(R.string.widget_tap_to_open))
                 views.setImageViewResource(R.id.widget_icon, R.drawable.ic_weather_cloudy)
+                views.setViewVisibility(R.id.widget_air_row, View.GONE)
             } else {
                 val presentation = WmoWeatherCode.present(data.weatherCode, data.isDay)
                 views.setTextViewText(
@@ -65,12 +68,42 @@ class WeatherWidgetProvider : AppWidgetProvider() {
                         time
                     )
                 )
+
+                bindAirRow(context, views, data)
             }
 
             views.setOnClickPendingIntent(R.id.widget_refresh_button, refreshPendingIntent(context))
             views.setOnClickPendingIntent(R.id.widget_root, openAppPendingIntent(context))
 
             appWidgetManager.updateAppWidget(appWidgetId, views)
+        }
+
+        private fun bindAirRow(context: Context, views: RemoteViews, data: WeatherData) {
+            val aqi = data.europeanAqi
+            val uv = data.uvIndex
+
+            if (aqi == null && uv == null) {
+                views.setViewVisibility(R.id.widget_air_row, View.GONE)
+                return
+            }
+            views.setViewVisibility(R.id.widget_air_row, View.VISIBLE)
+            views.setViewVisibility(R.id.widget_air_separator, if (aqi != null && uv != null) View.VISIBLE else View.GONE)
+
+            if (aqi != null) {
+                views.setViewVisibility(R.id.widget_aqi, View.VISIBLE)
+                views.setTextViewText(R.id.widget_aqi, context.getString(R.string.widget_aqi_format, aqi))
+                views.setTextColor(R.id.widget_aqi, AirQualityLevel.colorForEuropeanAqi(aqi))
+            } else {
+                views.setViewVisibility(R.id.widget_aqi, View.GONE)
+            }
+
+            if (uv != null) {
+                views.setViewVisibility(R.id.widget_uv, View.VISIBLE)
+                views.setTextViewText(R.id.widget_uv, context.getString(R.string.widget_uv_format, uv.roundToInt()))
+                views.setTextColor(R.id.widget_uv, AirQualityLevel.colorForUvIndex(uv))
+            } else {
+                views.setViewVisibility(R.id.widget_uv, View.GONE)
+            }
         }
 
         private fun refreshPendingIntent(context: Context): PendingIntent {

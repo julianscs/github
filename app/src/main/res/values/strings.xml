@@ -11,12 +11,19 @@
     <string name="status_permission_ok_no_data">Permiso concedido. Toca \"Actualizar ahora\" para obtener el clima.</string>
     <string name="status_updating">Actualizando…</string>
     <string name="status_last_update_format">%1$s · %2$d°C\nÚltima actualización: %3$s</string>
+    <string name="status_aqi_format">Calidad del aire: %1$d (%2$s)</string>
+    <string name="status_uv_format">Índice UV: %1$d (%2$s)</string>
 
     <string name="widget_no_data_temp">--°</string>
     <string name="widget_no_data_location">Sin datos</string>
     <string name="widget_tap_to_open">Toca para configurar</string>
     <string name="widget_temperature_format">%1$d°</string>
     <string name="widget_updated_at_format">%1$s · %2$s</string>
+    <string name="widget_aqi_format">AQI %1$d</string>
+    <string name="widget_uv_format">UV %1$d</string>
+    <string name="widget_aqi_placeholder">AQI --</string>
+    <string name="widget_uv_placeholder">UV --</string>
+    <string name="widget_air_separator">·</string>
 
     <string name="weather_clear">Despejado</string>
     <string name="weather_partly_cloudy">Parcialmente nublado</string>
@@ -27,4 +34,17 @@
     <string name="weather_snow">Nieve</string>
     <string name="weather_storm">Tormenta</string>
     <string name="weather_unknown">Sin datos</string>
+
+    <string name="aqi_good">Buena</string>
+    <string name="aqi_fair">Aceptable</string>
+    <string name="aqi_moderate">Moderada</string>
+    <string name="aqi_poor">Mala</string>
+    <string name="aqi_very_poor">Muy mala</string>
+    <string name="aqi_extremely_poor">Extremadamente mala</string>
+
+    <string name="uv_low">Bajo</string>
+    <string name="uv_moderate">Moderado</string>
+    <string name="uv_high">Alto</string>
+    <string name="uv_very_high">Muy alto</string>
+    <string name="uv_extreme">Extremo</string>
 </resources>

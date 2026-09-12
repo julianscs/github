@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Date
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,16 +60,29 @@ class MainActivity : AppCompatActivity() {
         }
 
         val data = WeatherPreferences.load(this)
-        statusText.text = if (data == null) {
-            getString(R.string.status_permission_ok_no_data)
-        } else {
-            val time = DateFormat.getTimeFormat(this).format(Date(data.updatedAtMillis))
-            getString(
-                R.string.status_last_update_format,
-                data.locationName,
-                Math.round(data.temperatureC),
-                time
+        if (data == null) {
+            statusText.text = getString(R.string.status_permission_ok_no_data)
+            return
+        }
+
+        val time = DateFormat.getTimeFormat(this).format(Date(data.updatedAtMillis))
+        val builder = StringBuilder(
+            getString(R.string.status_last_update_format, data.locationName, Math.round(data.temperatureC), time)
+        )
+        data.europeanAqi?.let {
+            builder.append("\n").append(
+                getString(R.string.status_aqi_format, it, getString(AirQualityLevel.descriptionResForEuropeanAqi(it)))
             )
         }
+        data.uvIndex?.let {
+            builder.append("\n").append(
+                getString(
+                    R.string.status_uv_format,
+                    it.roundToInt(),
+                    getString(AirQualityLevel.descriptionResForUvIndex(it))
+                )
+            )
+        }
+        statusText.text = builder.toString()
     }
 }

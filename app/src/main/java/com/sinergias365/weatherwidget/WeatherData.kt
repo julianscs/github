@@ -5,5 +5,7 @@ data class WeatherData(
     val temperatureC: Double,
     val weatherCode: Int,
     val isDay: Boolean,
+    val europeanAqi: Int?,
+    val uvIndex: Double?,
     val updatedAtMillis: Long
 )
