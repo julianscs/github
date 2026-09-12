@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mi Clima</string>
+    <string name="widget_label">Clima actual</string>
+
+    <string name="main_instructions">Concede permiso de ubicación y añade el widget \"Clima actual\" a tu pantalla de inicio para ver el tiempo de donde estés.</string>
+    <string name="action_grant_permission">Conceder permiso de ubicación</string>
+    <string name="action_refresh_now">Actualizar ahora</string>
+
+    <string name="status_no_permission">Falta el permiso de ubicación.</string>
+    <string name="status_permission_ok_no_data">Permiso concedido. Toca \"Actualizar ahora\" para obtener el clima.</string>
+    <string name="status_updating">Actualizando…</string>
+    <string name="status_last_update_format">%1$s · %2$d°C\nÚltima actualización: %3$s</string>
+
+    <string name="widget_no_data_temp">--°</string>
+    <string name="widget_no_data_location">Sin datos</string>
+    <string name="widget_tap_to_open">Toca para configurar</string>
+    <string name="widget_temperature_format">%1$d°</string>
+    <string name="widget_updated_at_format">%1$s · %2$s</string>
+
+    <string name="weather_clear">Despejado</string>
+    <string name="weather_partly_cloudy">Parcialmente nublado</string>
+    <string name="weather_overcast">Nublado</string>
+    <string name="weather_fog">Niebla</string>
+    <string name="weather_drizzle">Llovizna</string>
+    <string name="weather_rain">Lluvia</string>
+    <string name="weather_snow">Nieve</string>
+    <string name="weather_storm">Tormenta</string>
+    <string name="weather_unknown">Sin datos</string>
+</resources>
